@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Pocong } from "src/plugins/pocong/src/pocong";
+import { Pocong } from "../src/pocong";
 
 export default class AxiosAdapter {
     constructor() {

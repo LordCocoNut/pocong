@@ -15,6 +15,7 @@ libraries.
 - [ ] Fix js definitions and polish the code to make it as natural to use as possible without digging around
 - [ ] Add pinia integration
 - [ ] Add http package support
+- [ ] Add default endpoint response model that will be the axios returned one
 
 ## Usage
 To start with, you have to configure the plugin for the app. The folowing code is just an example. It is recommended to specify
@@ -42,11 +43,15 @@ app.use(VuePocong, {
         successCallback,
         errorCallback
     ) => {
-        if (!endpointResponse.isSuccess()) {
+        //The endpoint response is an object returned from axios.
+        //If you define custom response model for axios via resolve configuration, it will be provided here
+        //We wanna provide basic endpointResponse in the future
+        const success = endpointResponse.status === 200;
+        if (!success === 200) {
             return errorCallback(endpointResponse.data);
         }
 
-        if (endpointResponse.isSuccess() && model) {
+        if (success === 200 && model) {
             return successCallback(new model(endpointResponse));
         }
 

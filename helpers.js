@@ -6,5 +6,7 @@ export const prepareRoute = (route, routeParams = undefined) => {
             route = route.replace(`{${key}}`, routeParams[key]);
         });
 
+    undefined === route && console.error(`Couldn't create endpoint path for the request from route ${route} and params ${routeParams}`);
+
     return route;
 };

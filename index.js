@@ -1,9 +1,12 @@
-import { Pocong } from "src/plugins/pocong/src/pocong";
+//@ts-check
+/** @typedef {import("./adapter/AxiosAdapter.js").default} AxiosAdapterType */
 
-export default {
+import { Pocong } from "./src/pocong";
+
+export const VuePocong = {
     /**
      * @param app
-     * @param {{adapter: AxiosAdapter}} options
+     * @param {{adapter: AxiosAdapterType, endpoints: {default: any} & Record<string, string>, parseResponse: () => any}} options
      */
     install: (app, options) => {
         Pocong.adapter = options.adapter;
@@ -11,3 +14,6 @@ export default {
         Pocong.parseResponse = options.parseResponse;
     },
 };
+
+export { default as AxiosAdapter } from "./adapter/AxiosAdapter.js";
+export { usePocong } from "./src/composable.js";

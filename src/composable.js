@@ -1,10 +1,10 @@
 import { onMounted, ref } from "vue";
-import { pocongRequest } from "src/plugins/pocong/src/pocong";
-import { Pocong } from "./pocong";
+import { Pocong, pocongRequest } from "./pocong.js";
 
 /**
- * @param {typeof definitions } definition
- * @param {{bodyParams?: {}, queryParams?: {}, routeParams?: {}}} initialParams
+ * @typedef {import("../types.js").RequestParams} RequestParams
+ * @param {{}} definition
+ * @param {RequestParams} initialParams
  * @returns {{request: ((routeParams: {}, bodyParams: {}, queryParams: {}): Promise<void>), data: *, error: *, loading: Ref<UnwrapRef<boolean>>}}
  */
 export const usePocong = (definition, initialParams = {}) => {
@@ -35,6 +35,8 @@ export const usePocong = (definition, initialParams = {}) => {
             queryParams,
             bodyParams
         );
+
+        console.log(response);
 
         Pocong.parseResponse(
             response,

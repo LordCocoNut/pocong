@@ -6,10 +6,10 @@
  * @property {string?} endpoint
  */
 
-import { prepareRoute } from "src/plugins/pocong/helpers";
+import { prepareRoute } from "../helpers.js";
 
 /**
- * @type {{endpoints: {default: undefined}, adapter?: AxiosAdapter}}
+ * @type {{endpoints: {default: undefined}, adapter?: AxiosAdapter, parseResponse: () => any}}
  */
 export const Pocong = {
     adapter: undefined,
