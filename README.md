@@ -100,5 +100,58 @@ const store = () => users.request(
     formData
 );
 
+```
+
+
+
+### Example config definitions
+```js
+//@ts-check
+
+/** @typedef {import('pocong/types.js').Definitions}  Definitions*/
+/** @typedef {import('pocong/types.js').PocongConfigDefinition}  PocongConfigDefinition*/
+/** @typedef {import('pocong/types.js').PocongCrudConfigDefinition}  PocongCrudConfigDefinition*/
+
+/**
+ * @type {{TodosList: PocongConfigDefinition, TodosCrud: PocongCrudConfigDefinition}}
+ */
+export const PocongDefinitions = {
+    TodosList: {
+        route: "/todos",
+        method: "get",
+        onMounted: true
+    },
+    TodosCrud: {
+        create: {
+            route: "/todos",
+            method: "post",
+        },
+        update: {
+            route: "/todos/{id}",
+            method: "put",
+        },
+        delete: {
+            route: "/todos/{id}",
+            method: "delete",
+        },
+    }
+}
+
+
+////And its usage in vue script
+<script setup>
+import { usePocong, usePocongCrud } from "pocong";
+import { PocongDefinitions } from "../plugins/pocong/definitions";
+
+//@ts-check
+usePocong(PocongDefinitions.TodosList, { routeParams: { page: 1 } });
+
+
+//Test crud
+const todosCrud = usePocongCrud(PocongDefinitions.TodosCrud, { routeParams: { id: 1 } });
+
+console.log(todosCrud.requestUpdate(undefined, { title: "test" }, { sorting: { hello: "world" } }));
+
+</script>
 
 ```

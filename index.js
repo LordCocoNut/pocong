@@ -16,4 +16,4 @@ export const VuePocong = {
 };
 
 export { default as AxiosAdapter } from "./adapter/AxiosAdapter.js";
-export { usePocong } from "./src/composable.js";
+export { usePocong, usePocongCrud } from "./src/composable.js";

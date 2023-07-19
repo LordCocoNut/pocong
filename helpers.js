@@ -1,6 +1,9 @@
 import { Pocong } from "./src/pocong";
 
-export const prepareRoute = (route, routeParams = undefined) => {
+export const prepareRoute = (route, routeParams = undefined, operation = undefined) => {
+
+    operation === "view" && (route += '/{id}');
+
     routeParams &&
         Object.keys(routeParams).forEach((key) => {
             route = route.replace(`{${key}}`, routeParams[key]);
@@ -10,3 +13,10 @@ export const prepareRoute = (route, routeParams = undefined) => {
 
     return route;
 };
+
+/**
+ * 
+ * @param {import("./types.js").PocongConfigDefinition} definition 
+ * @returns 
+ */
+export const definitionIsCrud = (definition) => definition.method === "crud";

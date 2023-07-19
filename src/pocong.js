@@ -79,6 +79,9 @@ const pocongPut = (requestConfig, routeParams, queryParams, bodyParams) => {
     );
 };
 
+/**
+ * @param {string} method 
+ */
 export const pocongRequest = (method) => {
     return {
         get: pocongGet,
