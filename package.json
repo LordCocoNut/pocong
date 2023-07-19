@@ -1,0 +1,23 @@
+{
+  "name": "pocong",
+  "version": "0.0.2",
+  "description": "Vue3 Rest Api wrapper",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Vue3",
+    "RestAPI",
+    "Axios",
+    "Wrapper"
+  ],
+  "author": "Ivan Puskajler",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.4.0"
+  },
+  "devDependencies": {
+    "vue": "^3.3.4"
+  }
+}
